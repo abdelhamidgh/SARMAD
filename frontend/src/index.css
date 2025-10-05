@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 40% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 30% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 30% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263 70% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 200 70% 50%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 30% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 280 80% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 30% 18%;
+    --input: 220 30% 18%;
+    --ring: 263 70% 60%;
+
+    --radius: 0.75rem;
+
+    --cosmic-purple: 263 70% 60%;
+    --cosmic-blue: 200 70% 50%;
+    --cosmic-pink: 320 70% 60%;
+    --stellar-glow: 180 100% 70%;
+    
+    --transition-stellar: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .cosmic-gradient {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(220 40% 8%) 50%, hsl(263 40% 12%) 100%);
+  }
+
+  .stellar-gradient {
+    background: linear-gradient(135deg, hsl(var(--cosmic-purple)) 0%, hsl(var(--cosmic-blue)) 100%);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--cosmic-purple) / 0.5), 0 0 40px hsl(var(--cosmic-blue) / 0.3);
+  }
+
+  .transition-stellar {
+    transition: var(--transition-stellar);
+  }
+
+  .particle-field {
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 90%, white, transparent);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    animation: particle-drift 60s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes particle-drift {
+    0%, 100% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      filter: drop-shadow(0 0 8px hsl(var(--cosmic-purple)));
+    }
+    50% {
+      opacity: 0.7;
+      filter: drop-shadow(0 0 20px hsl(var(--cosmic-blue)));
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes zoom-transition {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .animate-zoom-out {
+    animation: zoom-transition 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}

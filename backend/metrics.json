@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.9216,
+  "last_updated": "2025-10-04T12:40:33.047406",
+  "total_samples": 10074,
+  "class_distribution": {
+    "CONFIRMED": 3086,
+    "CANDIDATE": 2020,
+    "FALSE_POSITIVE": 4968
+  },
+  "classification_report": {
+    "precision": 0.9971,
+    "recall": 0.9971,
+    "f1_score": 0.9971
+  }
+}
